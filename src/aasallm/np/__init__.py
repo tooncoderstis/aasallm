@@ -4,7 +4,18 @@ Setiap operasi (dot product, matmul, softmax, LayerNorm, attention, ...) ditulis
 eksplisit mengikuti rumus buku, tanpa framework, agar dapat diaudit baris-per-baris.
 """
 
-from aasallm.np import matrices, probability, vectors
+from aasallm.np import information, matrices, probability, vectors
+from aasallm.np.information import (
+    bits_per_byte,
+    cross_entropy,
+    entropy,
+    kl_divergence,
+    mean_negative_log_likelihood,
+    perplexity,
+)
+from aasallm.np.information import (
+    information as self_information,
+)
 from aasallm.np.matrices import (
     flops_matmul,
     identity,
@@ -37,23 +48,31 @@ from aasallm.np.vectors import (
 __all__ = [
     "add",
     "as_vector",
+    "bits_per_byte",
     "conditional_probability",
     "cosine_similarity",
+    "cross_entropy",
     "cumulative_sum",
     "dot",
+    "entropy",
     "expected_value",
     "flops_matmul",
     "hadamard",
     "identity",
+    "information",
+    "kl_divergence",
     "matadd",
     "matmul",
     "matrices",
     "matvec",
+    "mean_negative_log_likelihood",
     "norm_l2",
     "normal_pdf",
+    "perplexity",
     "probability",
     "sample_categorical",
     "scale",
+    "self_information",
     "std",
     "transpose",
     "uniform",

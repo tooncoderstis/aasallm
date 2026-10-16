@@ -17,6 +17,7 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Fase 1: modul vektor NumPy (`src/aasallm/np/vectors.py`) + uji (`tests/test_vectors.py`) + catatan Bab 3 (`docs/belajar/bab-03-vektor.md`).
 - Fase 1: modul matriks NumPy (`src/aasallm/np/matrices.py`) + uji (`tests/test_matrices.py`) + catatan Bab 4 (`docs/belajar/bab-04-matriks.md`).
 - Fase 1: modul probabilitas NumPy (`src/aasallm/np/probability.py`) + uji (`tests/test_probability.py`) + catatan Bab 5 (`docs/belajar/bab-05-probabilitas.md`).
+- Fase 1: modul teori informasi NumPy (`src/aasallm/np/information.py`) + uji (`tests/test_information.py`) + catatan Bab 6 (`docs/belajar/bab-06-informasi.md`).
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).

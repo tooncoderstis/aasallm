@@ -10,7 +10,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 - [x] [Bab 3 — Vektor](bab-03-vektor.md)
 - [x] [Bab 4 — Matriks dan Perkalian Matriks](bab-04-matriks.md)
 - [x] [Bab 5 — Probabilitas](bab-05-probabilitas.md)
-- [ ] Bab 6 — Teori Informasi: Entropi, Cross-Entropy, Perplexity
+- [x] [Bab 6 — Teori Informasi: Entropi, Cross-Entropy, Perplexity](bab-06-informasi.md)
 - [ ] Bab 7 — Turunan, Gradien, dan Aturan Rantai
 
 ## Bagian II — Komponen Neural (Fase 2–6)

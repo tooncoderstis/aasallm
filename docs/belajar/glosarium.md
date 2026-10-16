@@ -36,3 +36,8 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **Varians / simpangan baku** | Sebaran nilai di sekitar rata-rata; dasar normalisasi LayerNorm. |
 | **Distribusi normal** | Sebaran Gaussian `N(μ, σ²)`; untuk inisialisasi parameter & analisis skala. |
 | **Sampling** | Memilih satu token dari distribusi (inverse transform sampling). |
+| **Entropi** | Rata-rata kejutan sebuah distribusi `H(P) = −∑ P log P`. |
+| **Cross-entropy** | `H(P,Q) = −∑ P log Q`; fungsi loss LLM. |
+| **KL divergence** | Selisih dua distribusi `D_KL(P‖Q) = H(P,Q) − H(P) ≥ 0`; tak simetris. |
+| **Perplexity** | `e^L`; jumlah pilihan efektif yang masih dipertimbangkan model. |
+| **BPB/BPC** | Bits per byte/character; loss ternormalisasi agar bisa dibandingkan antar tokenizer. |

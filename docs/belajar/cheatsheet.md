@@ -75,3 +75,13 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Normalisasi LayerNorm: `ĥ = (h − μ)/σ`
 - Normal: `p(x) = (1/(σ√(2π))) exp(−(x−μ)²/(2σ²))`
 - Sampling: inverse-CDF — pilih token pertama yang `C_k > u`
+
+### Bab 6 — Teori informasi
+- Informasi: `I(p) = −log p` (basis 2 → bit, `ln` → nat)
+- Entropi: `H(P) = −∑ P log P`; maksimum `log n` saat seragam
+- Cross-entropy: `H(P,Q) = −∑ P log Q` ≥ `H(P)`; `= H(P)` hanya jika `P = Q`
+- KL divergence: `D_KL(P‖Q) = ∑ P log(P/Q) = H(P,Q) − H(P) ≥ 0` (tak simetris)
+- Loss LLM (target one-hot): `L = −log P_θ(x_benar)`
+- Loss rata-rata: `L = −(1/N) ∑ log P_θ(x_t | x_{<t})`
+- Perplexity: `PPL = e^L`; `PPL = k` ⇔ seakan memilih dari `k` pilihan
+- Bit per byte: `BPB = L_total(nat) / (ln 2 × jumlah byte)`
