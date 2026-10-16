@@ -20,6 +20,7 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Fase 1: modul teori informasi NumPy (`src/aasallm/np/information.py`) + uji (`tests/test_information.py`) + catatan Bab 6 (`docs/belajar/bab-06-informasi.md`).
 - Fase 1: modul turunan/gradien NumPy (`src/aasallm/np/calculus.py`) + uji (`tests/test_calculus.py`) + catatan Bab 7 (`docs/belajar/bab-07-turunan.md`).
 - Fase 1: catatan Bab 1–7, `cheatsheet.md`, dan `glosarium.md` lengkap untuk fondasi.
+- Panduan membaca proyek (`docs/belajar/PANDUAN.md`): cara menavigasi catatan/kode/uji + peta baca rinci.
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).

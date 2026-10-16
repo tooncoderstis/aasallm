@@ -2,6 +2,8 @@
 
 Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kode pendamping di `src/aasallm/` dan uji di `tests/`.
 
+> Baru mulai? Baca **[PANDUAN.md](PANDUAN.md)** — cara menavigasi catatan, kode, dan uji, plus peta baca rinci.
+
 > Sumber acuan: buku *"Memahami Matematika di Balik LLM"* (PDF di root: `LLM.pdf`, `per bab/`). Catatan ini **bukan** salinan; fokus pada konsep, rumus kunci, dan contoh angka.
 
 ## Bagian I — Fondasi (Fase 1)
