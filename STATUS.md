@@ -62,7 +62,7 @@ Kondisi ringkas: **Fase 0–12 ✅** (seluruh 22 bab + Lampiran tuntas). Fase 0�
 ## Yang belum selesai / menunggu
 | Item | Catatan |
 |---|---|
-| Repo GitHub | Belum dibuat/push (rencana publik `aasallm`) |
+| Repo GitHub | ✅ publik: https://github.com/tooncoderstis/aasallm (CI hijau) |
 | Secret hub | ✅ terisi di `.env` (dari repo portofolio); tidak di-commit |
 | Secret EasyPanel | ✅ MCP `easypanel` aktif (dikelola server MCP); project baru ditolak (batas paket) → deploy di project `m` |
 | Isi 22 bab | ✅ Bab 1–22 + Lampiran selesai |
