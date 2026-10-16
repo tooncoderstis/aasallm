@@ -4,7 +4,15 @@ Setiap operasi (dot product, matmul, softmax, LayerNorm, attention, ...) ditulis
 eksplisit mengikuti rumus buku, tanpa framework, agar dapat diaudit baris-per-baris.
 """
 
-from aasallm.np import vectors
+from aasallm.np import matrices, vectors
+from aasallm.np.matrices import (
+    flops_matmul,
+    identity,
+    matadd,
+    matmul,
+    matvec,
+    transpose,
+)
 from aasallm.np.vectors import (
     add,
     as_vector,
@@ -20,8 +28,15 @@ __all__ = [
     "as_vector",
     "cosine_similarity",
     "dot",
+    "flops_matmul",
     "hadamard",
+    "identity",
+    "matadd",
+    "matmul",
+    "matrices",
+    "matvec",
     "norm_l2",
     "scale",
+    "transpose",
     "vectors",
 ]

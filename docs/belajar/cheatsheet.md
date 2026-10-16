@@ -55,3 +55,12 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Cosine similarity: `cos(θ) = (a·b)/(‖a‖‖b‖) ∈ [−1, +1]`
 - Hadamard (elemen-per-elemen): `(a ⊙ b)_i = a_i b_i` → hasil vektor
 - `Var(q·k) = d_k` untuk komponen normal standar (alasan pembagian `√d_k` di attention)
+
+### Bab 4 — Matriks
+- Ukuran: `A ∈ ℝ^{m×n}` (baris dulu, lalu kolom); `A_ij` = baris `i`, kolom `j`
+- Transpos: `(Aᵀ)_ij = A_ji`; `(AB)ᵀ = BᵀAᵀ`
+- Perkalian: `C_ij = ∑_p A_ip B_pj`; syarat dimensi tengah cocok: `(m×k)·(k×n)=(m×n)`
+- Perkalian tidak komutatif: `AB ≠ BA`
+- Transformasi linear: `y = xW`; dua lapisan linear = satu lapisan → non-linear wajib (Bab 9)
+- Batch: `Q = HW_Q` menghasilkan query untuk semua token sekaligus
+- Biaya: `FLOP ≈ 2·m·n·k`; attention berskala `n²`

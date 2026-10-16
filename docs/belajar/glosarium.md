@@ -26,3 +26,7 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **Cosine similarity** | Dot product dibagi panjang kedua vektor; hanya mengukur kemiripan arah, rentang `[−1, +1]`. |
 | **Hadamard product** | Perkalian elemen-per-elemen dua vektor (`a ⊙ b`); hasilnya vektor. |
 | **d_model** | Dimensi vektor tiap token (mis. 768 untuk GPT-2 small, 12288 untuk GPT-3). |
+| **Transpos (Aᵀ)** | Matriks A dengan baris dan kolom ditukar; dipakai di `QKᵀ`. |
+| **Transformasi linear** | Operasi `y = xW`; menumpuknya tidak menambah kemampuan (butuh non-linear). |
+| **FLOP** | Satu operasi aritmetika pada bilangan desimal; ukuran biaya komputasi. |
+| **Batch** | Memproses banyak token sekaligus lewat satu perkalian matriks. |

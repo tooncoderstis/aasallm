@@ -15,6 +15,7 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Fase 1: catatan Bab 1 (`docs/belajar/bab-01-apa-yang-dihitung-llm.md`) + seed `cheatsheet.md` & `glosarium.md`.
 - Fase 1: catatan Bab 2 (`docs/belajar/bab-02-notasi.md`); `cheatsheet.md` & `glosarium.md` diperluas (notasi, eksponensial, logaritma).
 - Fase 1: modul vektor NumPy (`src/aasallm/np/vectors.py`) + uji (`tests/test_vectors.py`) + catatan Bab 3 (`docs/belajar/bab-03-vektor.md`).
+- Fase 1: modul matriks NumPy (`src/aasallm/np/matrices.py`) + uji (`tests/test_matrices.py`) + catatan Bab 4 (`docs/belajar/bab-04-matriks.md`).
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).

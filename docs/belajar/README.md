@@ -8,7 +8,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 - [x] [Bab 1 — Apa Sebenarnya yang Dihitung LLM?](bab-01-apa-yang-dihitung-llm.md)
 - [x] [Bab 2 — Kamus Notasi: Cara Membaca Rumus](bab-02-notasi.md)
 - [x] [Bab 3 — Vektor](bab-03-vektor.md)
-- [ ] Bab 4 — Matriks dan Perkalian Matriks
+- [x] [Bab 4 — Matriks dan Perkalian Matriks](bab-04-matriks.md)
 - [ ] Bab 5 — Probabilitas
 - [ ] Bab 6 — Teori Informasi: Entropi, Cross-Entropy, Perplexity
 - [ ] Bab 7 — Turunan, Gradien, dan Aturan Rantai
