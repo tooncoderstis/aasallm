@@ -12,10 +12,12 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Struktur paket `src/aasallm` (np, torch, serve), `pyproject.toml`, smoke test.
 - CI GitHub Actions (ruff + pytest), health files, secret scan.
 - Pelaporan hub portofolio (`scripts/hub-report.mjs`, `npm run hub:report`).
+- Fase 1: catatan Bab 1 (`docs/belajar/bab-01-apa-yang-dihitung-llm.md`) + seed `cheatsheet.md` & `glosarium.md`.
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).
 - Keputusan model demo dicatat: mini-LLM Bab 21 = verifikasi, demo = model char-level Fase 11 (ADR-0006).
+- Fase 1 (Fondasi Matematika, Bab 1–7) dimulai 🔄.
 ### Fixed
 
 ## [0.1.0] - 2026-10-11

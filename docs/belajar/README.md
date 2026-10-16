@@ -5,7 +5,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 > Sumber acuan: buku *"Memahami Matematika di Balik LLM"* (PDF di root: `LLM.pdf`, `per bab/`). Catatan ini **bukan** salinan; fokus pada konsep, rumus kunci, dan contoh angka.
 
 ## Bagian I — Fondasi (Fase 1)
-- [ ] Bab 1 — Apa Sebenarnya yang Dihitung LLM?
+- [x] [Bab 1 — Apa Sebenarnya yang Dihitung LLM?](bab-01-apa-yang-dihitung-llm.md)
 - [ ] Bab 2 — Kamus Notasi: Cara Membaca Rumus
 - [ ] Bab 3 — Vektor
 - [ ] Bab 4 — Matriks dan Perkalian Matriks

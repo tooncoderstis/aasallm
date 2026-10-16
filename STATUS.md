@@ -4,18 +4,18 @@
 > Riwayat rilis: [`CHANGELOG.md`](CHANGELOG.md) · Keputusan: [`docs/adr/`](docs/adr/) · Kebutuhan: [`PRD.md`](PRD.md).
 > **Jangan simpan kredensial di file ini.**
 
-- **Terakhir diperbarui**: 2026-10-11
+- **Terakhir diperbarui**: 2026-10-16
 - **Versi produksi aktif**: —
 - **Platform**: Python 3.11 (NumPy → PyTorch); deploy EasyPanel (Docker image via GHCR publik)
 
 ## TL;DR (konteks 30 detik)
-Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai**; berikutnya **Fase 1 (Fondasi Matematika, Bab 2–7)**. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
+Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai** ✅; **Fase 1 (Fondasi Matematika, Bab 1–7) dikerjakan** 🔄. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
 
 ## Checklist Tahap
 | Fase | Judul | Status |
 |---|---|---|
 | 0 | Setup & Fondasi | ✅ |
-| 1 | Fondasi Matematika (Bab 2–7) | ⬜ |
+| 1 | Fondasi Matematika (Bab 1–7) | 🔄 |
 | 2 | Tokenisasi & Embedding (Bab 8) | ⬜ |
 | 3 | Neuron & Aktivasi (Bab 9) | ⬜ |
 | 4 | Softmax & Loss (Bab 10) | ⬜ |
@@ -32,15 +32,15 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 
 ## Kondisi saat ini
 - **Fase 0 selesai** ✅: scaffold dokumen + struktur paket `src/aasallm`.
+- **Fase 1 dikerjakan** 🔄: fondasi matematika (Bab 1–7) — catatan + modul NumPy (`vectors`, `matrices`, `probability`, `information`, `calculus`) + uji.
 - Verifikasi lokal hijau: `ruff check .`, `ruff format --check .`, `pytest` (2 passed).
-- `git init` sudah; 37 file ter-stage; **belum ada commit**.
+- Commit awal Fase 0 dibuat (`chore: scaffold fase 0`).
 - Hub portofolio tersinkron (`aasallm`, 13 fase terbaca, 1 selesai).
 - Deploy: belum (Fase 12).
 
 ## Yang belum selesai / menunggu
 | Item | Catatan |
 |---|---|
-| Commit awal | Belum ada (menunggu izin); 37 file ter-stage |
 | Repo GitHub | Belum dibuat/push (rencana publik `aasallm`) |
 | Secret hub | ✅ terisi di `.env` (dari repo portofolio); tidak di-commit |
 | Secret EasyPanel | `EASYPANEL_API_KEY` belum diisi; MCP perlu di-restart bila baru ditambah |
