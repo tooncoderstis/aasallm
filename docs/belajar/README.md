@@ -6,7 +6,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 
 ## Bagian I — Fondasi (Fase 1)
 - [x] [Bab 1 — Apa Sebenarnya yang Dihitung LLM?](bab-01-apa-yang-dihitung-llm.md)
-- [ ] Bab 2 — Kamus Notasi: Cara Membaca Rumus
+- [x] [Bab 2 — Kamus Notasi: Cara Membaca Rumus](bab-02-notasi.md)
 - [ ] Bab 3 — Vektor
 - [ ] Bab 4 — Matriks dan Perkalian Matriks
 - [ ] Bab 5 — Probabilitas

@@ -6,6 +6,11 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 
 | Simbol | Arti |
 |---|---|
+| `x` | skalar (satu angka) |
+| **x** | vektor (deretan angka) |
+| **X** | matriks (tabel angka) |
+| `x_i` | elemen ke-`i` dari vektor **x** |
+| `X_ij` | elemen baris `i`, kolom `j` dari matriks **X** |
 | `x_t` | token (atau nilainya) pada posisi ke-`t` |
 | `V` | ukuran kosakata (jumlah token) |
 | `d` / `d_model` | dimensi model (panjang vektor tiap token) |
@@ -13,9 +18,19 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 | `d_ff` | dimensi lapisan feed-forward (umumnya `4d`) |
 | `∑` (sigma) | penjumlahan semua suku |
 | `∏` (pi) | perkalian semua suku |
+| `eˣ` / `exp(x)` | eksponensial (selalu positif) |
+| `ln(x)` | logaritma natural (kebalikan `eˣ`) |
 | `∂` | turunan parsial |
+| `∇` | gradien (kumpulan turunan parsial) |
 | `‖x‖` | norma (panjang) vektor `x` |
+| `x · y` | dot product |
 | `xᵀ` | transpos dari `x` |
+| `max` / `argmax` | nilai terbesar / posisi nilai terbesar |
+| `𝔼[·]` | ekspektasi (nilai rata-rata) |
+| `∼` | berdistribusi sebagai |
+| `≈` | kira-kira sama dengan |
+| `∝` | sebanding dengan (sampai faktor konstan) |
+| `∈`, `ℝⁿ` | anggota dari; himpunan vektor `n` bilangan real |
 
 ## Rumus per bab
 
@@ -23,3 +38,11 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Prediksi token berikutnya: `P(x_{t+1} | x_1, …, x_t)`
 - Probabilitas kalimat (aturan rantai): `P(x_1, …, x_n) = ∏_{t=1}^{n} P(x_t | x_1, …, x_{t-1})`
 - Jumlah parameter Transformer decoder: `N ≈ V·d + L·(4d² + 2·d·d_ff)`; jika `d_ff = 4d` maka `N ≈ V·d + L·12d²`
+
+### Bab 2 — Kamus notasi
+- Penjumlahan: `∑_{i=1}^{n} a_i = a_1 + a_2 + … + a_n`
+- Perkalian: `∏_{i=1}^{n} a_i = a_1 × a_2 × … × a_n`
+- Eksponensial: `e^{a+b} = e^a × e^b`; `e⁰ = 1`; `eˣ > 0` selalu
+- Logaritma: `ln(1) = 0`; `ln(a × b) = ln(a) + ln(b)`; `ln(x) < 0` untuk `0 < x < 1`
+- Ganti basis: `log₂(x) = ln(x) / ln(2)`
+- Loss LLM: `−ln(p)` (positif karena `ln(p)` negatif untuk `p ∈ (0,1)`)
