@@ -85,3 +85,13 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Loss rata-rata: `L = −(1/N) ∑ log P_θ(x_t | x_{<t})`
 - Perplexity: `PPL = e^L`; `PPL = k` ⇔ seakan memilih dari `k` pilihan
 - Bit per byte: `BPB = L_total(nat) / (ln 2 × jumlah byte)`
+
+### Bab 7 — Turunan, gradien, aturan rantai
+- Turunan: `f'(x) = lim_{h→0} (f(x+h) − f(x))/h`
+- Aturan update (gradient descent): `θ ← θ − η ∇_θ L`
+- Parsial: `∂f/∂x` (variabel lain ditahan); gradien `∇f = [∂f/∂x₁, …]`
+- Aturan rantai: `dz/dx = (dz/dy)(dy/dx)` — dasar backpropagation
+- Percabangan: gradien dijumlahkan (residual connection)
+- Turunan `y = xW`: `∂L/∂W = xᵀ (∂L/∂y)`, `∂L/∂x = (∂L/∂y) Wᵀ`
+- Gradien numerik (verifikasi): `∂L/∂θ_i ≈ (L(θ_i+ε) − L(θ_i−ε)) / (2ε)`
+- Turunan loss terhadap logit = `p − y` (softmax + cross-entropy)

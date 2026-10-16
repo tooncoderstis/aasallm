@@ -18,11 +18,13 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Fase 1: modul matriks NumPy (`src/aasallm/np/matrices.py`) + uji (`tests/test_matrices.py`) + catatan Bab 4 (`docs/belajar/bab-04-matriks.md`).
 - Fase 1: modul probabilitas NumPy (`src/aasallm/np/probability.py`) + uji (`tests/test_probability.py`) + catatan Bab 5 (`docs/belajar/bab-05-probabilitas.md`).
 - Fase 1: modul teori informasi NumPy (`src/aasallm/np/information.py`) + uji (`tests/test_information.py`) + catatan Bab 6 (`docs/belajar/bab-06-informasi.md`).
+- Fase 1: modul turunan/gradien NumPy (`src/aasallm/np/calculus.py`) + uji (`tests/test_calculus.py`) + catatan Bab 7 (`docs/belajar/bab-07-turunan.md`).
+- Fase 1: catatan Bab 1–7, `cheatsheet.md`, dan `glosarium.md` lengkap untuk fondasi.
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).
 - Keputusan model demo dicatat: mini-LLM Bab 21 = verifikasi, demo = model char-level Fase 11 (ADR-0006).
-- Fase 1 (Fondasi Matematika, Bab 1–7) dimulai 🔄.
+- Fase 1 (Fondasi Matematika, Bab 1–7) dimulai 🔄 lalu dituntaskan ✅: 5 modul NumPy (`vectors`, `matrices`, `probability`, `information`, `calculus`) + 7 catatan bab, seluruh uji hijau.
 ### Fixed
 
 ## [0.1.0] - 2026-10-11

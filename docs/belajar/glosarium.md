@@ -41,3 +41,12 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **KL divergence** | Selisih dua distribusi `D_KL(P‖Q) = H(P,Q) − H(P) ≥ 0`; tak simetris. |
 | **Perplexity** | `e^L`; jumlah pilihan efektif yang masih dipertimbangkan model. |
 | **BPB/BPC** | Bits per byte/character; loss ternormalisasi agar bisa dibandingkan antar tokenizer. |
+| **Turunan** | Laju perubahan keluaran terhadap masukan; `lim (f(x+h) − f(x))/h`. |
+| **Turunan parsial (∂)** | Turunan terhadap satu variabel dengan variabel lain dianggap konstan. |
+| **Gradien (∇)** | Vektor semua turunan parsial; menunjuk arah naik paling cepat. |
+| **Learning rate (η)** | Ukuran langkah gradient descent; terlalu besar → loss meledak. |
+| **Gradient descent** | Menurunkan loss dengan menggeser parameter ke arah `−∇L`. |
+| **Aturan rantai** | `dz/dx = (dz/dy)(dy/dx)`; dasar backpropagation. |
+| **Backpropagation** | Gradien merambat mundur dari loss, mengalikan turunan lokal. |
+| **Vanishing gradient** | Gradien menyusut hingga nol pada aktivasi jenuh (mis. sigmoid berlapis). |
+| **Gradien numerik** | Verifikasi gradien lewat central difference `(L(θ+ε) − L(θ−ε))/(2ε)`. |

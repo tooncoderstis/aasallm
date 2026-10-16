@@ -11,7 +11,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 - [x] [Bab 4 — Matriks dan Perkalian Matriks](bab-04-matriks.md)
 - [x] [Bab 5 — Probabilitas](bab-05-probabilitas.md)
 - [x] [Bab 6 — Teori Informasi: Entropi, Cross-Entropy, Perplexity](bab-06-informasi.md)
-- [ ] Bab 7 — Turunan, Gradien, dan Aturan Rantai
+- [x] [Bab 7 — Turunan, Gradien, dan Aturan Rantai](bab-07-turunan.md)
 
 ## Bagian II — Komponen Neural (Fase 2–6)
 - [ ] Bab 8 — Dari Teks ke Angka: Tokenisasi dan Embedding
@@ -36,8 +36,8 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 - [ ] Lampiran — Rincian Eksperimen Bab 21
 
 ## Berkas pendukung
-- [ ] `cheatsheet.md` — ringkasan rumus & simbol
-- [ ] `glosarium.md` — istilah kunci
+- [x] `cheatsheet.md` — ringkasan rumus & simbol
+- [x] `glosarium.md` — istilah kunci
 
 ## Konvensi penulisan
 - Mulai dengan "Masalah" lalu "Gagasan", diakhiri "Inti bab".
