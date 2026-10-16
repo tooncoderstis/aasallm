@@ -16,7 +16,7 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 - [x] [Bab 7 — Turunan, Gradien, dan Aturan Rantai](bab-07-turunan.md)
 
 ## Bagian II — Komponen Neural (Fase 2–6)
-- [ ] Bab 8 — Dari Teks ke Angka: Tokenisasi dan Embedding
+- [x] [Bab 8 — Dari Teks ke Angka: Tokenisasi dan Embedding](bab-08-tokenisasi-embedding.md)
 - [ ] Bab 9 — Neuron, Lapisan, dan Fungsi Aktivasi
 - [ ] Bab 10 — Softmax dan Fungsi Kerugian
 - [ ] Bab 11 — Backpropagation

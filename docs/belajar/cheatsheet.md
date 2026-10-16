@@ -95,3 +95,11 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Turunan `y = xW`: `∂L/∂W = xᵀ (∂L/∂y)`, `∂L/∂x = (∂L/∂y) Wᵀ`
 - Gradien numerik (verifikasi): `∂L/∂θ_i ≈ (L(θ_i+ε) − L(θ_i−ε)) / (2ε)`
 - Turunan loss terhadap logit = `p − y` (softmax + cross-entropy)
+
+### Bab 8 — Tokenisasi & embedding
+- Tokenisasi sub-kata (BPE): gabung pasangan simbol yang paling sering, berulang
+- One-hot: `o_i` vektor panjang `V` (1 di posisi `i`); dot dua one-hot beda = 0
+- Ambil embedding: `e_i = o_i E` ≡ ambil baris ke-`i` dari `E` (biaya `O(d)`)
+- Alur tahap: `X = OE`, `O ∈ ℝ^{n×V}`, `E ∈ ℝ^{V×d}`, `X ∈ ℝ^{n×d}`
+- Parameter embedding: `V × d`
+- Weight tying: `logit = h Eᵀ` (berbagi matriks embedding, hemat `V×d` parameter)

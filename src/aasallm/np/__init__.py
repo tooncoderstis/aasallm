@@ -4,7 +4,9 @@ Setiap operasi (dot product, matmul, softmax, LayerNorm, attention, ...) ditulis
 eksplisit mengikuti rumus buku, tanpa framework, agar dapat diaudit baris-per-baris.
 """
 
-from aasallm.np import calculus, information, matrices, probability, vectors
+from aasallm.np import bpe, calculus, embedding, information, matrices, probability, vectors
+from aasallm.np.bpe import encode as bpe_encode
+from aasallm.np.bpe import split_symbols, train_bpe
 from aasallm.np.calculus import (
     central_difference,
     gradient_descent_step,
@@ -16,6 +18,14 @@ from aasallm.np.calculus import (
     sigmoid,
     sigmoid_derivative,
     tanh_derivative,
+)
+from aasallm.np.embedding import (
+    embed_one_hot,
+    embedding_lookup,
+    embedding_parameters,
+    one_hot,
+    one_hot_matrix,
+    tied_logits,
 )
 from aasallm.np.information import (
     bits_per_byte,
@@ -61,6 +71,8 @@ __all__ = [
     "add",
     "as_vector",
     "bits_per_byte",
+    "bpe",
+    "bpe_encode",
     "calculus",
     "central_difference",
     "conditional_probability",
@@ -68,6 +80,10 @@ __all__ = [
     "cross_entropy",
     "cumulative_sum",
     "dot",
+    "embed_one_hot",
+    "embedding",
+    "embedding_lookup",
+    "embedding_parameters",
     "entropy",
     "expected_value",
     "flops_matmul",
@@ -86,6 +102,8 @@ __all__ = [
     "normal_pdf",
     "numerical_derivative",
     "numerical_gradient",
+    "one_hot",
+    "one_hot_matrix",
     "perplexity",
     "probability",
     "relu",
@@ -95,8 +113,11 @@ __all__ = [
     "self_information",
     "sigmoid",
     "sigmoid_derivative",
+    "split_symbols",
     "std",
     "tanh_derivative",
+    "tied_logits",
+    "train_bpe",
     "transpose",
     "uniform",
     "validate_distribution",

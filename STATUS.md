@@ -9,14 +9,14 @@
 - **Platform**: Python 3.11 (NumPy → PyTorch); deploy EasyPanel (Docker image via GHCR publik)
 
 ## TL;DR (konteks 30 detik)
-Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai** ✅; **Fase 1 (Fondasi Matematika, Bab 1–7) selesai** ✅. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
+Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai** ✅; **Fase 1 (Fondasi Matematika, Bab 1–7) selesai** ✅; **Fase 2 (Tokenisasi & Embedding, Bab 8) dikerjakan** 🔄. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
 
 ## Checklist Tahap
 | Fase | Judul | Status |
 |---|---|---|
 | 0 | Setup & Fondasi | ✅ |
 | 1 | Fondasi Matematika (Bab 1–7) | ✅ |
-| 2 | Tokenisasi & Embedding (Bab 8) | ⬜ |
+| 2 | Tokenisasi & Embedding (Bab 8) | 🔄 |
 | 3 | Neuron & Aktivasi (Bab 9) | ⬜ |
 | 4 | Softmax & Loss (Bab 10) | ⬜ |
 | 5 | Backpropagation (Bab 11) | ⬜ |
@@ -33,6 +33,7 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 ## Kondisi saat ini
 - **Fase 0 selesai** ✅: scaffold dokumen + struktur paket `src/aasallm`.
 - **Fase 1 selesai** ✅: fondasi matematika (Bab 1–7) — 7 catatan bab + 5 modul NumPy (`vectors`, `matrices`, `probability`, `information`, `calculus`) + `cheatsheet.md` & `glosarium.md`.
+- **Fase 2 dikerjakan** 🔄: tokenisasi & embedding (Bab 8) — catatan + modul NumPy (`bpe`, `embedding`) + uji.
 - Verifikasi lokal hijau: `ruff check .`, `ruff format --check .`, `pytest` (83 passed).
 - Commit Fase 0 & Fase 1 (per bab) dibuat.
 - Hub portofolio tersinkron (`aasallm`, 13 fase terbaca, 2 selesai).

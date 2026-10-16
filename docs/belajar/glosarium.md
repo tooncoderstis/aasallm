@@ -50,3 +50,9 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **Backpropagation** | Gradien merambat mundur dari loss, mengalikan turunan lokal. |
 | **Vanishing gradient** | Gradien menyusut hingga nol pada aktivasi jenuh (mis. sigmoid berlapis). |
 | **Gradien numerik** | Verifikasi gradien lewat central difference `(L(θ+ε) − L(θ−ε))/(2ε)`. |
+| **Tokenisasi** | Memecah teks menjadi token (sub-kata); teks → deretan ID integer. |
+| **BPE** | Byte Pair Encoding; menggabungkan pasangan simbol paling sering, berulang. |
+| **One-hot** | Vektor panjang `V` bernilai 1 di posisi token, 0 di tempat lain. |
+| **Embedding** | Baris matriks `E ∈ ℝ^{V×d}` untuk tiap token; nilainya dipelajari, bukan ditulis. |
+| **Weight tying** | Memakai matriks embedding yang sama (ditranspos) untuk lapisan keluaran: `logit = h Eᵀ`. |
+| **`<unk>` / `<bos>` / `<eos>`** | Token khusus: tak dikenal / awal urutan / akhir urutan. |

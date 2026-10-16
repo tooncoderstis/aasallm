@@ -76,7 +76,7 @@ Uji memuat angka persis dari buku. Kalau ragu memahami sebuah rumus, baca ujinya
 
 ```python
 def test_dot_first_example():
-    assert dot([2.0, 3.0], [4.0, -1.0]) == pytest.approx(5.0, abs=TOL)   # 2·4 + 3·(−1) = 5
+    assert dot([2.0, 3.0], [4.0, -1.0]) == pytest.approx(5.0, abs=TOL)  # 2·4 + 3·(−1) = 5
 ```
 
 ### d. Rujukan cepat
