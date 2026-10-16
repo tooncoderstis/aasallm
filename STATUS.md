@@ -9,14 +9,14 @@
 - **Platform**: Python 3.11 (NumPy → PyTorch); deploy EasyPanel (Docker image via GHCR publik)
 
 ## TL;DR (konteks 30 detik)
-Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai** ✅; **Fase 1 (Fondasi Matematika, Bab 1–7) selesai** ✅; **Fase 2 (Tokenisasi & Embedding, Bab 8) dikerjakan** 🔄. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
+Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di Balik LLM"* (22 bab): catatan belajar bahasa Indonesia + implementasi kode (NumPy murni lalu PyTorch). Puncak: melatih mini-LLM 188 parameter dari nol dan memverifikasi titik pemeriksaan buku, lalu demo web (FastAPI + chat) di EasyPanel. **Fase 0 (Setup & Fondasi) selesai** ✅; **Fase 1 (Fondasi Matematika, Bab 1–7) selesai** ✅; **Fase 2 (Tokenisasi & Embedding, Bab 8) selesai** ✅. Kesimpulan & keputusan kunci ada di bagian **Keputusan & kesimpulan penting** di bawah.
 
 ## Checklist Tahap
 | Fase | Judul | Status |
 |---|---|---|
 | 0 | Setup & Fondasi | ✅ |
 | 1 | Fondasi Matematika (Bab 1–7) | ✅ |
-| 2 | Tokenisasi & Embedding (Bab 8) | 🔄 |
+| 2 | Tokenisasi & Embedding (Bab 8) | ✅ |
 | 3 | Neuron & Aktivasi (Bab 9) | ⬜ |
 | 4 | Softmax & Loss (Bab 10) | ⬜ |
 | 5 | Backpropagation (Bab 11) | ⬜ |
@@ -33,10 +33,10 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 ## Kondisi saat ini
 - **Fase 0 selesai** ✅: scaffold dokumen + struktur paket `src/aasallm`.
 - **Fase 1 selesai** ✅: fondasi matematika (Bab 1–7) — 7 catatan bab + 5 modul NumPy (`vectors`, `matrices`, `probability`, `information`, `calculus`) + `cheatsheet.md` & `glosarium.md`.
-- **Fase 2 dikerjakan** 🔄: tokenisasi & embedding (Bab 8) — catatan + modul NumPy (`bpe`, `embedding`) + uji.
-- Verifikasi lokal hijau: `ruff check .`, `ruff format --check .`, `pytest` (83 passed).
-- Commit Fase 0 & Fase 1 (per bab) dibuat.
-- Hub portofolio tersinkron (`aasallm`, 13 fase terbaca, 2 selesai).
+- **Fase 2 selesai** ✅: tokenisasi & embedding (Bab 8) — catatan + modul NumPy (`bpe`, `embedding`) + uji.
+- Verifikasi lokal hijau: `ruff check .`, `ruff format --check .`, `pytest` (101 passed).
+- Commit Fase 0–2 (per bab) dibuat.
+- Hub portofolio tersinkron (`aasallm`, 13 fase terbaca, 3 selesai).
 - Deploy: belum (Fase 12).
 
 ## Yang belum selesai / menunggu
@@ -45,7 +45,7 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 | Repo GitHub | Belum dibuat/push (rencana publik `aasallm`) |
 | Secret hub | ✅ terisi di `.env` (dari repo portofolio); tidak di-commit |
 | Secret EasyPanel | `EASYPANEL_API_KEY` belum diisi; MCP perlu di-restart bila baru ditambah |
-| Isi 22 bab | Bab 1–7 selesai; Bab 8–22 menyusul fase 2–11 |
+| Isi 22 bab | Bab 1–8 selesai; Bab 9–22 menyusul fase 3–11 |
 
 ## Keputusan & kesimpulan penting (sesi 2026-10-11)
 - **Mini-LLM Bab 21 = alat verifikasi, bukan model pakai.** Dilatih hanya dari **4 kalimat** (korpus "kucing duduk di atas meja/tikar", 7 token/kalimat → 24 pasangan input–target), vocab 8 token, 188 parameter, batch penuh, 400 langkah. Ia hanya meniru proporsi data (`P(meja)≈0,75`, `P(tikar)≈0,25`); tidak bisa generalisasi/mengobrol.
