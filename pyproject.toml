@@ -22,7 +22,7 @@ dependencies = ["numpy>=1.26"]
 torch = ["torch>=2.2"]
 serve = ["fastapi>=0.110", "uvicorn[standard]>=0.29"]
 tokenizers = ["tiktoken>=0.6", "sentencepiece>=0.2"]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8", "ruff>=0.5", "pypdf>=4"]
 
 [project.scripts]
 # CLI akan ditambahkan di fase berikutnya.

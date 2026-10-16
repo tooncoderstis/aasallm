@@ -30,6 +30,16 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 
 > Fase dikerjakan: tandai 🔄 saat mulai dan ✅ saat selesai, lalu jalankan `npm run hub:report` di tiap perubahan — hub portofolio mengirim notifikasi (inbox + Web Push).
 
+## Cara melanjutkan (resume) — baca ini saat membuka proyek lagi
+1. **Baca `STATUS.md` ini** — kondisi & langkah berikutnya ada di sini (satu-satunya sumber kebenaran progres).
+2. **Pasang lingkungan** (sekali saja per mesin):
+   `python -m venv .venv` lalu `.venv\Scripts\python -m pip install -e ".[dev]"` (extra `dev` termasuk `pypdf` untuk membaca PDF bab).
+3. **Verifikasi cepat**: `.venv\Scripts\ruff check .` dan `.venv\Scripts\pytest` → harap **101 passed**.
+4. **Lanjut pekerjaan**: fase berikutnya **Fase 3 (Neuron & Aktivasi, Bab 9)**. Mulai dengan menandai baris Fase 3 menjadi 🔄 di tabel di atas → `npm run hub:report`; ekstrak teks bab: `.venv\Scripts\python scripts\extract_bab.py "per bab\bab 09.pdf"`; lalu ikuti **DoD** di `AGENTS.md` (kode → test → formatter → CHANGELOG → STATUS → ADR bila perlu → hub:report).
+5. **Panduan membaca** proyek (urutan catatan↔kode↔uji): `docs/belajar/PANDUAN.md`.
+
+Kondisi ringkas: **Fase 0–2 ✅** (Bab 1–8); berikutnya **Fase 3 (Bab 9)**. Semua pekerjaan sudah ter-commit; tidak ada yang menggantung.
+
 ## Kondisi saat ini
 - **Fase 0 selesai** ✅: scaffold dokumen + struktur paket `src/aasallm`.
 - **Fase 1 selesai** ✅: fondasi matematika (Bab 1–7) — 7 catatan bab + 5 modul NumPy (`vectors`, `matrices`, `probability`, `information`, `calculus`) + `cheatsheet.md` & `glosarium.md`.
@@ -59,12 +69,15 @@ Proyek belajar + membangun LLM dari nol mengikuti buku *"Memahami Matematika di 
 python -m venv .venv
 .venv\Scripts\python -m pip install -e ".[dev]"
 .venv\Scripts\ruff check .
+.venv\Scripts\ruff format --check .
 .venv\Scripts\pytest
 npm run hub:report
 ```
+
+Membaca teks bab dari PDF (untuk menulis catatan bab baru): `.venv\Scripts\python scripts\extract_bab.py "per bab\bab 09.pdf"`.
 
 ## Rilis
 `deploy/easypanel-docker/build-push.ps1` → image GHCR → deploy via MCP EasyPanel. Detail: [`docs/runbooks/`](docs/runbooks/).
 
 ## Referensi cepat
-- PRD: `PRD.md` · Changelog: `CHANGELOG.md` · ADR: `docs/adr/README.md` · Runbook: `docs/runbooks/` · Catatan: `docs/belajar/`
+- PRD: `PRD.md` · Changelog: `CHANGELOG.md` · ADR: `docs/adr/README.md` · Runbook: `docs/runbooks/` · Catatan: `docs/belajar/` · Panduan membaca: `docs/belajar/PANDUAN.md`

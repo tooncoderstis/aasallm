@@ -22,6 +22,8 @@ Status terkini: [`STATUS.md`](STATUS.md).
 - Fase 1: catatan Bab 1–7, `cheatsheet.md`, dan `glosarium.md` lengkap untuk fondasi.
 - Panduan membaca proyek (`docs/belajar/PANDUAN.md`): cara menavigasi catatan/kode/uji + peta baca rinci.
 - Fase 2: catatan Bab 8 (`docs/belajar/bab-08-tokenisasi-embedding.md`) + modul NumPy (`src/aasallm/np/bpe.py`, `src/aasallm/np/embedding.py`) + uji (`tests/test_bpe.py`, `tests/test_embedding.py`).
+- Utilitas `scripts/extract_bab.py` (ekstrak teks bab PDF ke stdout) + `pypdf` di extra `dev`.
+- Panduan `docs/belajar/PANDUAN.md` diperbarui ke Fase 2 (Bab 8) + `STATUS.md` punya bagian "Cara melanjutkan (resume)".
 
 ### Changed
 - Fase 0 (Setup & Fondasi) dituntaskan ✅; hub portofolio tersinkron (`aasallm`, 13 fase terbaca).
