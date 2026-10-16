@@ -34,5 +34,6 @@ jobs:
 
       - name: Secret scan (gitleaks)
         run: |
-          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz | tar -xz
-          ./gitleaks dir . --redact -v --exit-code 2
+          mkdir -p /tmp/gitleaks-bin
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz | tar -xz -C /tmp/gitleaks-bin
+          /tmp/gitleaks-bin/gitleaks dir . --redact -v --exit-code 2
