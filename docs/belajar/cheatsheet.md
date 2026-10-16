@@ -46,3 +46,12 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Logaritma: `ln(1) = 0`; `ln(a × b) = ln(a) + ln(b)`; `ln(x) < 0` untuk `0 < x < 1`
 - Ganti basis: `log₂(x) = ln(x) / ln(2)`
 - Loss LLM: `−ln(p)` (positif karena `ln(p)` negatif untuk `p ∈ (0,1)`)
+
+### Bab 3 — Vektor
+- Penjumlahan: `a + b = [a_1+b_1, …, a_n+b_n]` (dimensi harus sama)
+- Kali skalar: `c·x = [c·x_1, …, c·x_n]`
+- Dot product: `a · b = ∑_{i=1}^{n} a_i b_i` → dua vektor jadi satu skalar
+- Norma L2: `‖x‖ = √(∑ x_i²)`; hubungan `‖x‖² = x · x`
+- Cosine similarity: `cos(θ) = (a·b)/(‖a‖‖b‖) ∈ [−1, +1]`
+- Hadamard (elemen-per-elemen): `(a ⊙ b)_i = a_i b_i` → hasil vektor
+- `Var(q·k) = d_k` untuk komponen normal standar (alasan pembagian `√d_k` di attention)

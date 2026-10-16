@@ -21,3 +21,8 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **Logaritma natural `ln`** | Kebalikan `eˣ`; mengubah perkalian menjadi penjumlahan. Basis `e` (nat); basis 2 untuk bit. |
 | **Nat / bit** | Satuan informasi: 1 nat = logaritma basis `e`, 1 bit = logaritma basis 2. Bab 6. |
 | **argmax** | Indeks (posisi) tempat nilai terbesar berada — dipakai memilih token, bukan nilainya. |
+| **Dot product** | Operasi dua vektor → satu skalar: `∑ a_i b_i`; ukuran kecocokan arah & besar. |
+| **Norma (L2)** | Panjang vektor: `√(∑ x_i²)`; dasar RMSNorm & LayerNorm. |
+| **Cosine similarity** | Dot product dibagi panjang kedua vektor; hanya mengukur kemiripan arah, rentang `[−1, +1]`. |
+| **Hadamard product** | Perkalian elemen-per-elemen dua vektor (`a ⊙ b`); hasilnya vektor. |
+| **d_model** | Dimensi vektor tiap token (mis. 768 untuk GPT-2 small, 12288 untuk GPT-3). |
