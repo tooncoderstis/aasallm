@@ -30,3 +30,9 @@ Istilah kunci yang dipakai di catatan belajar. Bertumbuh tiap bab (Fase 1).
 | **Transformasi linear** | Operasi `y = xW`; menumpuknya tidak menambah kemampuan (butuh non-linear). |
 | **FLOP** | Satu operasi aritmetika pada bilangan desimal; ukuran biaya komputasi. |
 | **Batch** | Memproses banyak token sekaligus lewat satu perkalian matriks. |
+| **Ruang sampel (Ω)** | Himpunan semua hasil yang mungkin; untuk LLM = kosakata. |
+| **Probabilitas bersyarat** | `P(A\|B) = P(A ∩ B)/P(B)`; model bahasa = kalkulator probabilitas bersyarat. |
+| **Ekspektasi `E[·]`** | Rata-rata berbobot: `∑ P(x) f(x)`. |
+| **Varians / simpangan baku** | Sebaran nilai di sekitar rata-rata; dasar normalisasi LayerNorm. |
+| **Distribusi normal** | Sebaran Gaussian `N(μ, σ²)`; untuk inisialisasi parameter & analisis skala. |
+| **Sampling** | Memilih satu token dari distribusi (inverse transform sampling). |

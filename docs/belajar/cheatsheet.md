@@ -64,3 +64,14 @@ Ringkasan rumus dan simbol yang muncul di catatan belajar. Bertumbuh tiap bab (F
 - Transformasi linear: `y = xW`; dua lapisan linear = satu lapisan → non-linear wajib (Bab 9)
 - Batch: `Q = HW_Q` menghasilkan query untuk semua token sekaligus
 - Biaya: `FLOP ≈ 2·m·n·k`; attention berskala `n²`
+
+### Bab 5 — Probabilitas
+- Distribusi: `0 ≤ P(ω) ≤ 1` dan `∑ P(ω) = 1`
+- Seragam: `P(ω) = 1/|Ω|`
+- Bersyarat: `P(A | B) = P(A ∩ B) / P(B)`
+- Aturan rantai: `P(x_1,…,x_n) = ∏_{t=1}^{n} P(x_t | x_{<t})` (berlaku persis)
+- Log-prob: `log P(x_1,…,x_n) = ∑ log P(x_t | x_{<t})` (stabilitas numerik)
+- Ekspektasi: `E[f] = ∑ P(x) f(x)`; varians `Var(x) = E[(x−E[x])²]`; `σ = √Var`
+- Normalisasi LayerNorm: `ĥ = (h − μ)/σ`
+- Normal: `p(x) = (1/(σ√(2π))) exp(−(x−μ)²/(2σ²))`
+- Sampling: inverse-CDF — pilih token pertama yang `C_k > u`
