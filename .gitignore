@@ -34,7 +34,8 @@ models/*.pth
 models/*.safetensors
 *.npy
 *.npz
-data/
+data/*
+!data/corpus.txt
 experiments/**/out/
 
 # Logs & runtime
