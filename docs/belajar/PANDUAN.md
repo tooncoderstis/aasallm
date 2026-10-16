@@ -21,29 +21,33 @@ Aturannya: **satu bab = satu catatan + satu modul + satu file uji**. Jadi Anda b
 aasallm/
 ├─ docs/
 │  ├─ belajar/            ← catatan belajar (bahasa Indonesia)
-│  │  ├─ bab-01..bab-08.md
+│  │  ├─ bab-01..bab-22.md + lampiran-eksperimen-bab-21.md
 │  │  ├─ cheatsheet.md    ← ringkasan rumus per bab
 │  │  ├─ glosarium.md     ← arti istilah kunci
 │  │  └─ PANDUAN.md       ← file ini
 │  ├─ adr/                ← keputusan desain (kenapa dibuat begini)
 │  ├─ referensi/          ← makalah yang dirujuk buku
 │  └─ runbooks/           ← cara operasional (deploy dll)
+├─ data/
+│  └─ corpus.txt          ← korpus char-level untuk model kecil (Fase 11)
 ├─ src/aasallm/
 │  ├─ np/                 ← implementasi NumPy murni (rujukan kebenaran)
-│  ├─ torch/              ← port PyTorch (Fase 11; masih kosong)
-│  └─ serve/              ← layanan demo (Fase 12; masih kosong)
-├─ tests/                 ← uji pytest (verifikasi angka buku)
+│  ├─ torch/              ← port PyTorch (paritas ADR-0001) + model char-level kecil
+│  └─ serve/              ← layanan FastAPI demo (engine + app)
+├─ deploy/                ← Dockerfile & skrip build image (EasyPanel)
+├─ scripts/               ← latih mini-LLM & model char-level
+├─ tests/                 ← uji pytest (verifikasi angka buku + paritas + layanan)
 ├─ PRD.md · STATUS.md · CHANGELOG.md
 └─ pyproject.toml
 ```
 
 Status terkini ada di `STATUS.md`; riwayat perubahan di `CHANGELOG.md`; **kenapa** sebuah keputusan diambil ada di `docs/adr/`.
 
-## 3. Apa yang sudah dibuat (Fase 1–2, Bab 1–8)
+## 3. Apa yang sudah dibuat (Fase 1–12, Bab 1–22 + Lampiran)
 
-**Catatan** (`docs/belajar/`) — 8 bab berformat **Masalah → Gagasan → Inti bab**, tiap rumus disertai contoh angka yang bisa dihitung ulang, ditutup "Cek pemahaman".
+**Catatan** (`docs/belajar/`) — 22 bab + Lampiran berformat **Masalah → Gagasan → Inti bab**, tiap rumus disertai contoh angka yang bisa dihitung ulang, ditutup "Cek pemahaman".
 
-**Kode** (`src/aasallm/np/`) — 7 modul, masing-masing menyalin rumus buku apa adanya:
+**Kode NumPy** (`src/aasallm/np/`) — 23 modul, masing-masing menyalin rumus buku apa adanya:
 
 | Bab | Modul | Fungsi inti |
 |---|---|---|
@@ -54,15 +58,45 @@ Status terkini ada di `STATUS.md`; riwayat perubahan di `CHANGELOG.md`; **kenapa
 | 7 | `calculus.py` | `numerical_gradient`, `gradient_descent_step`, `sigmoid`/`relu` + turunan, `linear_backward` |
 | 8 | `bpe.py` | `split_symbols`, `train_bpe`, `encode` (tokenizer BPE) |
 | 8 | `embedding.py` | `one_hot`, `embedding_lookup`, `embed_one_hot`, `tied_logits`, `embedding_parameters` |
+| 9 | `activation.py` | `gelu`, `gelu_approx`, `silu`, `tanh`, turunan; registri `ACTIVATIONS` (ReLU/sigmoid dipakai ulang dari `calculus`) |
+| 9 | `neuron.py` | `neuron`, `linear`/`dense`, `layer_parameters`, `collapse_linear_layers`, `ffn`, `ffn_parameters`, `swiglu`, `ffn_swiglu` |
+| 10 | `softmax.py` | `softmax`, `log_softmax`, `log_sum_exp` (semua stabil secara numerik) |
+| 10 | `loss.py` | `softmax_cross_entropy` (`LSE(z) − z_c`), `softmax_cross_entropy_gradient` (`p − y`), `label_smoothing`, pembanding MSE |
+| 11 | `backprop.py` | aturan mundur (`matmul_backward`, `relu_backward`, `residual_*`), `two_layer_mlp_backward`, `training_flops` (`6ND`), `activation_memory`, `factor_power` |
+| 12 | `optimizer.py` | `sgd_step`, `momentum_step`, `adam_step`/`adamw_step` (+koreksi bias), `lr_warmup`/`lr_cosine`, `gradient_clip`, `adam_memory_bytes` (`16N`) |
+| 13 | `attention.py` | `project_qkv`, `attention_scores`/`attention_weights`, `causal_mask`, `scaled_dot_product_attention`, `score_variance`, `attention_flops` |
+| 14 | `multihead.py` | `split_heads`/`concat_heads`, `multi_head_attention`, `kv_cache_bytes`, `kv_cache_ratio` |
+| 15 | `position.py` | `add_position`, `sinusoidal_encoding`, `rope_theta`/`rope_rotate`/`rope_apply`, `alibi_bias`, `position_interpolation` |
+| 16 | `layernorm.py` | `layernorm`, `rmsnorm` |
+| 16 | `block.py` | `pre_ln_block`, `post_ln_block`, `stack_blocks`, `block_parameters` (dll.) |
+| 17 | `transformer.py` | `output_logits` (`Z=H·Eᵀ`), `decoder_forward`, `approx_model_parameters`, `forward_macs`/`forward_flops`, `matrix_sizes` |
+| 18 | `training.py` | `shift_pairs`, `sequence_cross_entropy`, `tokens_per_step`, `gradient_accumulation`, `scaling_law`, `chinchilla_tokens` |
+| 19 | `inference.py` | `greedy`, `temperature_softmax`, `top_k`/`top_p`, `sample`, `decode_next`, `beam_step`, KV-cache helpers |
+| 21 | `mini_llm.py` | `init_params`, `forward`, `sequence_loss`, `finite_difference_gradients`, `train`, `next_token_probs`, `generate` |
+| 20 | `alignment.py` | `sft_loss`, `bradley_terry`, `reward_model_loss`, `rlhf_objective`, `dpo_loss`, `lora_delta`/`lora_parameters` |
 
-**Uji** (`tests/`) — 8 file, **101 uji lolos**, memverifikasi angka-angka dari buku (toleransi desimal ke-3).
+**Kode PyTorch** (`src/aasallm/torch/`, paritas ADR-0001):
 
-Belum diisi (memang kosong): `src/aasallm/torch/` dan `src/aasallm/serve/` — dipakai mulai Fase 11–12.
+| Modul | Isi |
+|---|---|
+| `functional.py` | port operasi inti (softmax, layernorm, gelu/silu, attention, multi-head, cross-entropy) — setara versi NumPy |
+| `model.py` | GPT char-level kecil (Pre-LN, weight tying) + `CharTokenizer`; untuk demo (ADR-0006) |
+
+**Kode layanan** (`src/aasallm/serve/`, FastAPI — ADR-0003):
+
+| Modul | Isi |
+|---|---|
+| `engine.py` | `Engine` (bungkus model char-level; `generate` & `explain` per-langkah) |
+| `app.py` | FastAPI: `GET /health`, `POST /generate`, `POST /explain`, halaman chat `GET /` + rate-limit sederhana |
+
+**Uji** (`tests/`) — 27 file, **314 uji lolos**, memverifikasi angka buku (toleransi desimal ke-3), **paritas NumPy↔PyTorch**, dan endpoint layanan. Uji mini-LLM melatih 400 langkah sekali (~25 dtk); uji PyTorch/FastAPI dilewati otomatis bila paketnya tidak ada.
+
+Semua lapis terisi: catatan, kode NumPy (rujukan), port PyTorch (paritas), dan layanan demo FastAPI. Demo dijalankan lokal via `uvicorn aasallm.serve.app:app` (lihat §7).
 
 ## 4. Cara memahami tiap lapis
 
 ### a. Membaca catatan
-Baca berurutan Bab 1 → 8. Tiap bab menjawab satu pertanyaan dan menutup dengan **Inti bab** + **Cek pemahaman**. Kalau macet pada simbol, buka `bab-02-notasi.md` atau `cheatsheet.md`.
+Baca berurutan Bab 1 → 22 (judul bab: `README.md`). Tiap bab menjawab satu pertanyaan dan menutup dengan **Inti bab** + **Cek pemahaman**. Kalau macet pada simbol, buka `bab-02-notasi.md` atau `cheatsheet.md`.
 
 ### b. Membaca kode
 Setiap fungsi = satu rumus. Docstring menyebut bab asalnya, jadi kode dibaca sebagai "rumus yang bisa dijalankan", bukan kotak hitam.
@@ -84,7 +118,7 @@ def test_dot_first_example():
 ### d. Rujukan cepat
 Butuh rumus → `cheatsheet.md`. Lupa istilah → `glosarium.md`. Ingin tahu *kenapa* diputuskan begitu → `docs/adr/`.
 
-## 5. Benang merah konsep (Bab 1–8 → menuju LLM)
+## 5. Benang merah konsep (Bab 1–22 → menuju LLM)
 
 Bab-bab yang sudah dikerjakan membentuk satu alur logis:
 
@@ -96,8 +130,21 @@ Bab-bab yang sudah dikerjakan membentuk satu alur logis:
 6. **Bab 6** — mengubah distribusi menjadi satu angka: **loss = −log p(token benar)**; **perplexity = e^loss**.
 7. **Bab 7** — **turunan/gradien** menunjukkan ke arah mana tiap parameter digeser agar loss turun; **aturan rantai** = dasar backpropagation.
 8. **Bab 8** — gerbang masuk: **tokenisasi** memecah teks jadi sub-kata, **embedding** menukarnya menjadi vektor yang **dipelajari** (bukan ditulis manusia).
+9. **Bab 9** — **neuron, lapisan, FFN**: komponen yang memuat ~2/3 parameter tiap blok; **fungsi non-linear** (ReLU/GELU/SiLU) membuat kedalaman model berarti — tanpa itu dua lapisan linear runtuh jadi satu.
+10. **Bab 10** — **softmax** mengubah logit menjadi probabilitas; loss `LSE(z) − z_c`; dan gradiennya yang legendaris **`p − y`** — besarnya otomatis sebanding dengan kesalahan.
+11. **Bab 11** — **backpropagation**: membawa sinyal `p − y` dari ujung ke seluruh model lewat aturan rantai mundur (biaya ≈ 2× forward); **residual connection** `y = x + F(x)` menyediakan jalur identitas agar gradien tidak meluruh.
+12. **Bab 12** — **optimizer**: setelah gradien (arah), tentukan ukuran langkah. **Adam** melepas besar langkah dari skala gradien (`m̂/√v̂`), ditambah warmup, cosine decay, dan gradient clipping.
+13. **Bab 13** — **attention**: satu-satunya jembatan antarposisi. Setiap token membuat **query/key/value**; kecocokan `QKᵀ` di-softmax jadi bobot, lalu mencampur `V`. `√d_k` menjaga skala, **causal mask** mencegah mencontek.
+14. **Bab 14** — **multi-head**: beberapa attention di subruang `d/h` memberi beberapa cara pandang terhadap konteks **tanpa menambah parameter**; hasilnya digabung lewat `W_O`.
+15. **Bab 15** — **informasi posisi**: attention **buta urutan**, jadi urutan harus disuntikkan — learned `X+P`, sinusoidal, **RoPE** (memutar Q/K tiap lapisan sehingga dot product hanya bergantung selisih posisi), atau ALiBi (penalti jarak).
+16. **Bab 16** — **blok Transformer**: attention + FFN dibungkus **residual** & **normalisasi** (LayerNorm/RMSNorm); masuk `n×d`, keluar `n×d` sehingga bisa ditumpuk. FFN memuat ~⅔ parameter.
+17. **Bab 17** — **lapisan keluaran**: keadaan akhir diubah menjadi logit lewat dot product dengan embedding (`Z=H·Eᵀ`), lalu softmax; model memprediksi **semua posisi** sekaligus.
+18. **Bab 18** — **pretraining**: menebak token berikutnya dengan label teks itu sendiri (self-supervised); biaya `C ≈ 6ND`, loss awal `ln V`, dan scaling law `L ∝ N^{−0,076}`, Chinchilla `D ≈ 20N`.
+19. **Bab 19** — **inference**: pemilihan token (greedy/sampling/temperature/top-k/top-p/beam) dan **KV cache** (attention `O(n²)→O(n)`; decode dibatasi bandwidth memori).
+20. **Bab 20** — **penyelarasan**: SFT (loss hanya di jawaban), reward model (Bradley–Terry), RLHF (`reward − β·KL`, PPO), **DPO** (langsung dari preferensi), dan **LoRA** (fine-tuning hemat parameter).
+21. **Bab 21 (MILESTONE)** — **latih mini-LLM 188 parameter dari nol**: loss `2,4480 → 0,0955`, `P(meja)=0,7492`, cos(meja,tikar) `0,9960`, attention one-hot — struktur muncul dari optimasi, bukan diprogram.
 
-Ringkasnya: Bab 1 memotret tujuan; Bab 2–4 menyiapkan perkakas angka; Bab 5–6 memberi ukuran benar/salah; Bab 7 memberi cara memperbaikinya; Bab 8 mengubah teks menjadi angka agar semuanya bisa dimulai. Modul Bab 3–8 dipakai ulang di fase berikutnya (mis. `dot` di attention Bab 13, `cross_entropy` di loss Bab 10, `embedding_lookup` di seluruh model).
+Ringkasnya: Bab 1 memotret tujuan; Bab 2–4 perkakas angka; Bab 5–6 ukuran benar/salah; Bab 7 cara memperbaiki; Bab 8 teks→angka; Bab 9 neuron & FFN; Bab 10 jalur maju & `p−y`; Bab 11 backpropagation; Bab 12 optimizer; Bab 13–17 attention → blok → model penuh; Bab 18 cara melatihnya; Bab 19 cara memakainya; Bab 20 menyelaraskannya jadi asisten; Bab 21 **membuktikan semuanya bekerja** pada model 188 parameter. Fase 11 mem-port ke PyTorch (paritas) + model char-level; Fase 12 demo web.
 
 ## 6. Peta baca rinci
 
@@ -113,6 +160,23 @@ Urutan yang disarankan. Kolom kanan = perintah untuk melihat sendiri.
 | 6 | `bab-06-informasi.md` | `np/information.py` | `pytest tests/test_information.py` | 40 mnt |
 | 7 | `bab-07-turunan.md` | `np/calculus.py` | `pytest tests/test_calculus.py` | 50 mnt |
 | 8 | `bab-08-tokenisasi-embedding.md` | `np/bpe.py`, `np/embedding.py` | `pytest tests/test_bpe.py tests/test_embedding.py` | 50 mnt |
+| 9 | `bab-09-neuron-lapisan-aktivasi.md` | `np/activation.py`, `np/neuron.py` | `pytest tests/test_activation.py tests/test_neuron.py` | 50 mnt |
+| 10 | `bab-10-softmax-loss.md` | `np/softmax.py`, `np/loss.py` | `pytest tests/test_softmax.py tests/test_loss.py` | 50 mnt |
+| 11 | `bab-11-backpropagation.md` | `np/backprop.py` | `pytest tests/test_backprop.py` | 50 mnt |
+| 12 | `bab-12-optimizer.md` | `np/optimizer.py` | `pytest tests/test_optimizer.py` | 50 mnt |
+| 13 | `bab-13-attention.md` | `np/attention.py` | `pytest tests/test_attention.py` | 60 mnt |
+| 14 | `bab-14-multi-head-attention.md` | `np/multihead.py` | `pytest tests/test_multihead.py` | 50 mnt |
+| 15 | `bab-15-informasi-posisi.md` | `np/position.py` | `pytest tests/test_position.py` | 50 mnt |
+| 16 | `bab-16-blok-transformer.md` | `np/layernorm.py`, `np/block.py` | `pytest tests/test_layernorm.py tests/test_block.py` | 60 mnt |
+| 17 | `bab-17-lapisan-keluaran.md` | `np/transformer.py` | `pytest tests/test_transformer.py` | 50 mnt |
+| 18 | `bab-18-pretraining.md` | `np/training.py` | `pytest tests/test_training.py` | 50 mnt |
+| 19 | `bab-19-inference.md` | `np/inference.py` | `pytest tests/test_inference.py` | 50 mnt |
+| 20 | `bab-20-sft-rlhf-dpo-lora.md` | `np/alignment.py` | `pytest tests/test_alignment.py` | 50 mnt |
+| 21 | `bab-21-mini-llm-dari-nol.md` | `np/mini_llm.py` | `pytest tests/test_mini_llm.py` (+ `python scripts/train_mini_llm.py`) | 60 mnt |
+| 11a | *(port PyTorch)* | `torch/functional.py`, `torch/model.py` | `pytest tests/test_torch_parity.py tests/test_torch_model.py` (+ `python scripts/train_char_model.py`) | 60 mnt |
+| 22 | `bab-22-peta-besar.md` | — (rangkuman) | — | 30 mnt |
+| — | `lampiran-eksperimen-bab-21.md` | `np/mini_llm.py` | `pytest tests/test_mini_llm.py` | 20 mnt |
+| 12 | *(layanan demo)* | `serve/engine.py`, `serve/app.py` | `pytest tests/test_serve.py` (+ `uvicorn aasallm.serve.app:app`) | 40 mnt |
 
 Cara pakai tiap baris: baca catatannya, buka modulnya untuk melihat rumus dalam kode, lalu jalankan ujinya. Jika ingin mencoba sendiri:
 
@@ -120,11 +184,11 @@ Cara pakai tiap baris: baca catatannya, buka modulnya untuk melihat rumus dalam 
 .venv\Scripts\python -c "from aasallm.np import dot, cosine_similarity; print(dot([2,3],[4,-1]))"
 ```
 
-> Bab 2 hampir tanpa kode (kamus notasi); Bab 1 murni konsep. Bab 3–8 punya kode + uji.
+> Bab 2 hampir tanpa kode (kamus notasi); Bab 1 murni konsep. Bab 3–22 punya kode + uji; Bab 22 murni rangkuman.
 
 ### Bab berikutnya (belum ditulis)
 
-- **Fase 3 (Bab 9)** — Neuron, lapisan, dan fungsi aktivasi. Melanjutkan Bab 4 (non-linear wajib) dan Bab 7 (`relu`/`sigmoid`).
+- Tidak ada — **seluruh 22 bab + Lampiran tuntas.** Lanjutan opsional (BACKLOG): fine-tuning lanjutan, kuantisasi, MoE, dll. (lihat `PRD.md`).
 
 Saat menulis bab baru, teks PDF-nya diekstrak dulu (lihat `scripts/extract_bab.py` dan bagian "Menjalankan" di bawah).
 
@@ -133,16 +197,27 @@ Saat menulis bab baru, teks PDF-nya diekstrak dulu (lihat `scripts/extract_bab.p
 ```sh
 python -m venv .venv
 .venv\Scripts\python -m pip install -e ".[dev]"
+.venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu   # untuk uji paritas
 .venv\Scripts\ruff check .
 .venv\Scripts\pytest
 ```
+
+**Menjalankan demo (layanan inference):**
+
+```sh
+.venv\Scripts\python -m pip install -e ".[serve]"
+.venv\Scripts\python -m uvicorn aasallm.serve.app:app --port 8000
+# buka http://127.0.0.1:8000/  (halaman chat); API: /health, /generate, /explain
+```
+
+Demo juga **tayang**: https://aasallm-web.hgteop.easypanel.host/ (lihat `docs/runbooks/deploy.md`).
 
 `pytest` hijau berarti semua angka buku cocok (toleransi desimal ke-3, lihat [ADR-0002](../adr/0002-strategi-verifikasi.md)).
 
 **Membaca teks bab dari PDF** (untuk menulis catatan bab baru). PDF buku tidak di-commit (hak cipta) dan `pypdf` ada di extra `dev`:
 
 ```sh
-.venv\Scripts\python scripts\extract_bab.py "per bab\bab 09.pdf"
+.venv\Scripts\python scripts\extract_bab.py "per bab\bab 20.pdf"
 ```
 
 ## 8. Status & berikutnya
@@ -150,7 +225,16 @@ python -m venv .venv
 - **Fase 0 (Setup & Fondasi): selesai** ✅
 - **Fase 1 (Fondasi Matematika, Bab 1–7): selesai** ✅
 - **Fase 2 (Tokenisasi & Embedding, Bab 8): selesai** ✅
-- **Berikutnya: Fase 3 (Neuron & Aktivasi, Bab 9)** — neuron, lapisan, dan fungsi aktivasi (`ReLU`, `GELU`, `SiLU`, `SwiGLU`).
+- **Fase 3 (Neuron & Aktivasi, Bab 9): selesai** ✅
+- **Fase 4 (Softmax & Loss, Bab 10): selesai** ✅
+- **Fase 5 (Backpropagation, Bab 11): selesai** ✅
+- **Fase 6 (Optimizer, Bab 12): selesai** ✅ — Bagian II (komponen neural) tuntas.
+- **Fase 7 (Attention, Bab 13–14): selesai** ✅ — Bagian III (Transformer) dimulai.
+- **Fase 8 (Informasi Posisi, Bab 15): selesai** ✅
+- **Fase 9 (Blok Transformer Lengkap, Bab 16–17): selesai** ✅ — Bagian III (Transformer) tuntas.
+- **Fase 10 (Latih Mini-LLM dari Nol, Bab 18–19, 21): selesai** ✅ — **MILESTONE**: loss `2,4480 → 0,0955`, `P(meja)=0,7492`, cos(meja,tikar) `0,9960`, 188 parameter.
+- **Fase 11 (Port PyTorch + Model Kecil, Bab 18–20): selesai** ✅ — paritas NumPy↔PyTorch + GPT char-level + penyelarasan (SFT/RLHF/DPO/LoRA).
+- **Fase 12 (Layanan Inference & Demo Deploy): selesai** ✅ — FastAPI (`/health`, `/generate`, `/explain`, halaman chat) + artefak deploy EasyPanel + catatan Bab 22 & Lampiran. **Seluruh 22 bab tuntas.**
 
 Detail dan daftar centang ada di [`STATUS.md`](../../STATUS.md) dan [`README.md`](README.md).
 

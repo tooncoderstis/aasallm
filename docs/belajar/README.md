@@ -17,25 +17,25 @@ Ringkasan tiap bab ditulis ulang dengan bahasa sendiri (Indonesia), disertai kod
 
 ## Bagian II — Komponen Neural (Fase 2–6)
 - [x] [Bab 8 — Dari Teks ke Angka: Tokenisasi dan Embedding](bab-08-tokenisasi-embedding.md)
-- [ ] Bab 9 — Neuron, Lapisan, dan Fungsi Aktivasi
-- [ ] Bab 10 — Softmax dan Fungsi Kerugian
-- [ ] Bab 11 — Backpropagation
-- [ ] Bab 12 — Optimizer: SGD, Momentum, dan Adam
+- [x] [Bab 9 — Neuron, Lapisan, dan Fungsi Aktivasi](bab-09-neuron-lapisan-aktivasi.md)
+- [x] [Bab 10 — Softmax dan Fungsi Kerugian](bab-10-softmax-loss.md)
+- [x] [Bab 11 — Backpropagation](bab-11-backpropagation.md)
+- [x] [Bab 12 — Optimizer: SGD, Momentum, dan Adam](bab-12-optimizer.md)
 
 ## Bagian III — Transformer (Fase 7–9)
-- [ ] Bab 13 — Attention: Query, Key, Value
-- [ ] Bab 14 — Multi-Head Attention
-- [ ] Bab 15 — Informasi Posisi: Positional Encoding dan RoPE
-- [ ] Bab 16 — Blok Transformer Lengkap
-- [ ] Bab 17 — Lapisan Keluaran dan Perjalanan Penuh Satu Token
+- [x] [Bab 13 — Attention: Query, Key, Value](bab-13-attention.md)
+- [x] [Bab 14 — Multi-Head Attention](bab-14-multi-head-attention.md)
+- [x] [Bab 15 — Informasi Posisi: Positional Encoding dan RoPE](bab-15-informasi-posisi.md)
+- [x] [Bab 16 — Blok Transformer Lengkap](bab-16-blok-transformer.md)
+- [x] [Bab 17 — Lapisan Keluaran dan Perjalanan Penuh Satu Token](bab-17-lapisan-keluaran.md)
 
 ## Bagian IV — Pelatihan & Praktik (Fase 10–11)
-- [ ] Bab 18 — Pretraining: Objektif, Batch, dan Scaling Law
-- [ ] Bab 19 — Inference: Sampling, Temperature, dan KV Cache
-- [ ] Bab 20 — Setelah Pretraining: SFT, RLHF, DPO, LoRA
-- [ ] Bab 21 — Mengamati Mini-LLM Belajar dari Nol
-- [ ] Bab 22 — Peta Besar
-- [ ] Lampiran — Rincian Eksperimen Bab 21
+- [x] [Bab 18 — Pretraining: Objektif, Batch, dan Scaling Law](bab-18-pretraining.md)
+- [x] [Bab 19 — Inference: Sampling, Temperature, dan KV Cache](bab-19-inference.md)
+- [x] [Bab 20 — Setelah Pretraining: SFT, RLHF, DPO, LoRA](bab-20-sft-rlhf-dpo-lora.md)
+- [x] [Bab 21 — Mengamati Mini-LLM Belajar dari Nol](bab-21-mini-llm-dari-nol.md)
+- [x] [Bab 22 — Peta Besar](bab-22-peta-besar.md)
+- [x] [Lampiran — Rincian Eksperimen Bab 21](lampiran-eksperimen-bab-21.md)
 
 ## Berkas pendukung
 - [x] `cheatsheet.md` — ringkasan rumus & simbol
