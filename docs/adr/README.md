@@ -14,6 +14,7 @@ Keputusan arsitektur & teknologi penting untuk `aasallm`. Satu keputusan = satu 
 | [0004](0004-deploy-easypanel.md) | Deploy EasyPanel: source Docker image via GHCR, programatik MCP | Diterima |
 | [0005](0005-repo-dan-registry.md) | Repo GitHub publik + image GHCR publik | Diterima |
 | [0006](0006-model-demo-dan-data.md) | Model untuk demo & data latihnya (mini-LLM = verifikasi; demo = model char-level) | Diterima |
+| [0007](0007-target-deploy-aktual.md) | Target deploy aktual: project `m`, service `aasallmweb` (batas project EasyPanel) | Diterima |
 
 ## Konvensi
 - Nomor urut 4 digit, tanpa lompat.
